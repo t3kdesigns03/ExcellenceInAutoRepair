@@ -180,7 +180,23 @@ async function photo(src, name, widths, fallback) {
     else await base.clone().png({ compressionLevel: 9, palette: true }).toFile(path.join(IMG, `${name}-${w}.png`));
   }
 }
-await photo("trustus.png", "service-you-can-trust", [400], "jpg"); // source is 400px wide
+// Hero photo: the original "Service You Can Trust" banner has its headline baked into a
+// black bar (rows 46–119 of the 400x309 source). Keep only the shop-floor photo below it
+// (brake rotor + tires); the headline is re-set as live text on the site so it stays crisp.
+// The source is tiny, so upscale 2x with Lanczos + light sharpening; the site's colour grade
+// and scrim do the rest.
+{
+  const crop = sharp(out("assets-src", "trustus.png")).extract({ left: 0, top: 121, width: 400, height: 188 });
+  const buf = await crop.toBuffer();
+  for (const w of [400, 800]) {
+    const base = sharp(buf)
+      .resize({ width: w, kernel: "lanczos3" })
+      .sharpen({ sigma: w > 400 ? 1.1 : 0.6, m1: 0.6, m2: 1.6 })
+      .modulate({ saturation: 0.85 });
+    await base.clone().webp({ quality: 82, effort: 6 }).toFile(path.join(IMG, `shop-floor-${w}.webp`));
+    await base.clone().jpeg({ quality: 80, mozjpeg: true }).toFile(path.join(IMG, `shop-floor-${w}.jpg`));
+  }
+}
 await photo("familt2.png", "family-owned", [400, 802], "png");
 await photo("honest.png", "quality-honest", [560, 1124], "png");
 

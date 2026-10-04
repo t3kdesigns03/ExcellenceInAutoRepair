@@ -3,9 +3,9 @@ import { Container, Eyebrow, Picture, SectionTitle } from "./ui";
 
 export default function Promises() {
   return (
-    <section id="promise" aria-labelledby="promise-title" className="tread bg-ink-2 py-16 text-white sm:py-24">
+    <section id="promise" aria-labelledby="promise-title" className="tread bg-ink-2 py-12 text-white sm:py-20 lg:py-24">
       <Container>
-        <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+        <div className="grid gap-6 sm:gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
           <div>
             <Eyebrow dark>Our service promise</Eyebrow>
             <SectionTitle id="promise-title" dark>
@@ -26,18 +26,18 @@ export default function Promises() {
           </div>
         </div>
 
-        <ol className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="mt-8 grid gap-3 sm:mt-12 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
           {promises.map((p, i) => (
             <li
               key={p.title}
-              className="relative flex flex-col rounded-xl border border-white/10 bg-ink-3/80 p-6 transition hover:border-mint/40"
+              className="relative grid grid-cols-[auto_1fr] gap-x-4 rounded-xl border border-white/10 bg-ink-3/80 p-5 transition hover:border-mint/40 sm:flex sm:flex-col sm:p-6"
             >
-              <span aria-hidden="true" className="font-display text-4xl font-bold leading-none text-mint/90 sm:text-5xl">
+              <span aria-hidden="true" className="row-span-2 font-display text-3xl font-bold leading-none text-mint/90 sm:text-5xl">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <span aria-hidden="true" className="mt-4 h-1 w-10 rounded bg-green" />
-              <h3 className="mt-4 font-display text-xl font-semibold uppercase tracking-wide">{p.title}</h3>
-              <p className="mt-2 leading-relaxed text-white/75">{p.text}</p>
+              <span aria-hidden="true" className="mt-4 hidden h-1 w-10 rounded bg-green sm:block" />
+              <h3 className="font-display text-lg font-semibold uppercase leading-tight tracking-wide sm:mt-4 sm:text-xl">{p.title}</h3>
+              <p className="mt-1.5 leading-relaxed text-white/75 sm:mt-2">{p.text}</p>
             </li>
           ))}
         </ol>

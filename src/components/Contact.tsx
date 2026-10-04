@@ -2,21 +2,21 @@ import { site } from "@/lib/site";
 import { ChatIcon, ClockIcon, ExternalIcon, NavigateIcon, PhoneIcon, PinIcon } from "./icons";
 import { Container, Eyebrow, SectionTitle } from "./ui";
 
-const card = "flex items-start gap-4 rounded-xl border border-white/10 bg-ink-3/70 p-5";
+const card = "flex items-start gap-4 rounded-xl border border-white/10 bg-ink-3/70 p-4 sm:p-5";
 const iconBox = "inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-mint/10 text-mint";
 const label = "font-display text-xs uppercase tracking-[0.2em] text-mint";
 
 export default function Contact() {
   return (
-    <section id="contact" aria-labelledby="contact-title" className="tread bg-ink py-16 text-white sm:py-24">
+    <section id="contact" aria-labelledby="contact-title" className="tread bg-ink py-12 text-white sm:py-20 lg:py-24">
       <Container>
         <Eyebrow dark>Visit or call</Eyebrow>
         <SectionTitle id="contact-title" dark>
           Stop by the shop
         </SectionTitle>
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
-          <div className="grid min-w-0 content-start gap-3">
+        <div className="mt-8 grid gap-4 sm:mt-10 sm:gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+          <div className="grid min-w-0 content-start gap-2.5 sm:gap-3">
             <div className={card}>
               <span className={iconBox}>
                 <PhoneIcon className="h-5.5 w-5.5" />
@@ -99,7 +99,7 @@ export default function Contact() {
               src={site.maps.embed}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              className="relative block aspect-[4/3] h-full min-h-80 w-full border-0 lg:aspect-auto"
+              className="relative block aspect-[4/3] h-full min-h-64 w-full border-0 sm:min-h-80 lg:aspect-auto"
             />
           </div>
         </div>

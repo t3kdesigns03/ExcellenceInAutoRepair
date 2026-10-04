@@ -33,6 +33,7 @@ html {
 body {
   background: var(--color-ink);
   color: var(--color-ink);
+  overflow-x: hidden; /* fallback for older iOS Safari */
   overflow-x: clip;
 }
 
