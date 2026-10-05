@@ -3,7 +3,7 @@
 
 export const site = {
   name: "Excellence In Auto-Repair",
-  owner: "Tom Mcguire",
+  owner: "Tom McGuire",
   since: 1993,
   phone: {
     display: "(402) 399-0934",
